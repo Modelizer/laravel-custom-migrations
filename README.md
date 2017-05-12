@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/codengine/laravel-custom-migrations/badge.svg?branch=1.3)](https://coveralls.io/github/codengine/laravel-custom-migrations?branch=1.3)
 [![Latest Stable Version](https://poser.pugx.org/codengine/laravel-custom-migrations/version.png)](https://packagist.org/packages/codengine/laravel-custom-migrations)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/badges/quality-score.png?b=1.3)](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/?branch=1.3)
-[![Documentation Status](https://readthedocs.org/projects/laravel-custom-migrations/badge/?version=latest)](https://readthedocs.org/projects/laravel-custom-migrations/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/laravel-custom-migrations/badge/?version=1.3)](https://readthedocs.org/projects/laravel-custom-migrations/?badge=1.3)
 [![Total Downloads](https://poser.pugx.org/codengine/laravel-custom-migrations/d/total.png)](https://packagist.org/packages/codengine/laravel-custom-migrations)
 [![Dependency Status](https://www.versioneye.com/user/projects/5915adf1e1638f005560576f/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5915adf1e1638f005560576f)
 
