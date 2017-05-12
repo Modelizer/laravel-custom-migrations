@@ -4,7 +4,7 @@
  * Copyright: Codengine @ 2015
  */
 
-class MigratorTest extends PHPUnit_Framework_TestCase {
+class MigratorTest extends Orchestra\Testbench\TestCase {
 	/** @var \Codengine\CustomMigrations\Migrator|PHPUnit_Framework_MockObject_MockObject $migrator */
 	protected $migrator;
 	/** @var \Illuminate\Database\Migrations\MigrationRepositoryInterface|PHPUnit_Framework_MockObject_MockObject */
@@ -22,18 +22,21 @@ class MigratorTest extends PHPUnit_Framework_TestCase {
 	public function setUp()
 	{
 		parent::setUp();
-		$this->migrationRepository = $this->getMock('\Illuminate\Database\Migrations\MigrationRepositoryInterface');
+		$this->migrationRepository = $this->getMockBuilder('\Illuminate\Database\Migrations\MigrationRepositoryInterface')
+			->getMock();
 		$this->migrationRepository->expects($this->any())
 			->method('log')
 			->willReturn(null);
 
-		$this->connectionResolver = $this->getMock('\Illuminate\Database\ConnectionResolverInterface');
-		$this->fileSystem = $this->getMock('\Illuminate\Filesystem\Filesystem');
+		$this->connectionResolver = $this->getMockBuilder('\Illuminate\Database\ConnectionResolverInterface')
+			->getMock();
+		$this->fileSystem = $this->getMockBuilder('\Illuminate\Filesystem\Filesystem')
+			->getMock();
 
 		$this->migrator = $this->getMockBuilder('Codengine\CustomMigrations\Migrator')
 			->setConstructorArgs(array(
 				$this->migrationRepository,
-				$this->connectionResolver = $this->getMock('\Illuminate\Database\ConnectionResolverInterface'),
+				$this->connectionResolver = $this->getMockBuilder('\Illuminate\Database\ConnectionResolverInterface')->getMock(),
 				$this->fileSystem
 			))
 			->setMethods(array('resolve'))
