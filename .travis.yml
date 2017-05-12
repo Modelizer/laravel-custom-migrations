@@ -15,8 +15,8 @@ env:
 
 install:
   - curl -s http://getcomposer.org/installer | php
-  - composer require satooshi/php-coveralls:~1.0@stable
-  - composer require --dev orchestra/testbench:${ORCHESTRA_VERSION}
+  - composer require satooshi/php-coveralls:~1.0@stable --no-update
+  - composer require --dev orchestra/testbench:${ORCHESTRA_VERSION} --no-update
   - php composer.phar install --dev --no-interaction
 
 script:
