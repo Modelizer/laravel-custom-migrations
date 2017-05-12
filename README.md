@@ -5,7 +5,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/badges/quality-score.png?b=1.3)](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/?branch=1.3)
 [![Documentation Status](https://readthedocs.org/projects/laravel-custom-migrations/badge/?version=latest)](https://readthedocs.org/projects/laravel-custom-migrations/?badge=latest)
 [![Total Downloads](https://poser.pugx.org/codengine/laravel-custom-migrations/d/total.png)](https://packagist.org/packages/codengine/laravel-custom-migrations)
-[![Dependency Status](https://www.versioneye.com/user/projects/5550bb35f7db0d2f07000371/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5550bb35f7db0d2f07000371)
+[![Dependency Status](https://www.versioneye.com/user/projects/5915adf1e1638f005560576f/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5915adf1e1638f005560576f)
 
 ### Run separate Laravel migrations on multiple databases ###
 
