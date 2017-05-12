@@ -1,14 +1,12 @@
 language: php
 
 php:
-  - 5.4
-  - 5.5
-  - 5.6
-  - hhvm
+  - '5.4'
+  - '5.5'
+  - '5.6'
+  - '7.0'
+  - '7.1'
   - nightly
-
-before_script:
-  - travis_retry composer self-update
 
 env:
   - LARAVEL_VERSION="4.0.*" ORCHESTRA_VERSION="2.0.*"
@@ -16,6 +14,14 @@ env:
   - LARAVEL_VERSION="4.2.*" ORCHESTRA_VERSION="2.2.*"
 
 install:
-   - composer require --dev orchestra/testbench:${ORCHESTRA_VERSION}
+  - curl -s http://getcomposer.org/installer | php
+  - composer require satooshi/php-coveralls:~1.0@stable
+  - composer require --dev orchestra/testbench:${ORCHESTRA_VERSION}
+  - php composer.phar install --dev --no-interaction
 
-script: phpunit
+script:
+  - mkdir -p build/logs
+  - php vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+
+after_success:
+  - travis_retry php vendor/bin/coveralls

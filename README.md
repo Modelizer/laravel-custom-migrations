@@ -1,5 +1,10 @@
 ## Laravel Custom Migrations
-[![Latest Stable Version](https://poser.pugx.org/codengine/laravel-custom-migrations/version.png)](https://packagist.org/packages/codengine/laravel-custom-migrations) [![Total Downloads](https://poser.pugx.org/codengine/laravel-custom-migrations/d/total.png)](https://packagist.org/packages/codengine/laravel-custom-migrations) [![Build Status](https://travis-ci.org/codengine/laravel-custom-migrations.svg?branch=1.0)](https://travis-ci.org/codengine/laravel-custom-migrations)
+[![Build Status](https://travis-ci.org/codengine/laravel-custom-migrations.svg?branch=1.0)](https://travis-ci.org/codengine/laravel-custom-migrations)
+[![Coverage Status](https://coveralls.io/repos/github/codengine/laravel-custom-migrations/badge.svg?branch=1.0)](https://coveralls.io/github/codengine/laravel-custom-migrations?branch=1.0)
+[![Latest Stable Version](https://poser.pugx.org/codengine/laravel-custom-migrations/version.png)](https://packagist.org/packages/codengine/laravel-custom-migrations)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/badges/quality-score.png?b=latest)](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/?branch=latest)
+[![Documentation Status](https://readthedocs.org/projects/laravel-custom-migrations/badge/?version=1.0)](https://readthedocs.org/projects/laravel-custom-migrations/?badge=1.0)
+[![Total Downloads](https://poser.pugx.org/codengine/laravel-custom-migrations/d/total.png)](https://packagist.org/packages/codengine/laravel-custom-migrations)
 
 ### Run separate Laravel migrations on multiple databases ###
 
@@ -8,6 +13,14 @@ This package provides a simple way of including different types of migrations ov
 It is a bit painful to run each migration independently for each database connection. You are also not able to differ which migration is responsible for which type of migration.
 
 **Custom Migrations to the Aid!**
+
+### Compatibility ###
+Laravel Version|Version
+---------------|-------
+4.x            |1.0.*
+5.0            |1.1.*
+5.1            |1.2.*
+5.2            |1.3.*
 
 ### Installation ###
 This package requires at least Laravel v4.0.x and has been tested with Laravel v4.1.x and 4.2.x.
