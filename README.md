@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/codengine/laravel-custom-migrations.svg?branch=1.0)](https://travis-ci.org/codengine/laravel-custom-migrations)
 [![Coverage Status](https://coveralls.io/repos/github/codengine/laravel-custom-migrations/badge.svg?branch=1.0)](https://coveralls.io/github/codengine/laravel-custom-migrations?branch=1.0)
 [![Latest Stable Version](https://poser.pugx.org/codengine/laravel-custom-migrations/version.png)](https://packagist.org/packages/codengine/laravel-custom-migrations)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/badges/quality-score.png?b=latest)](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/?branch=latest)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/badges/quality-score.png?b=1.0)](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/?branch=1.0)
 [![Documentation Status](https://readthedocs.org/projects/laravel-custom-migrations/badge/?version=1.0)](https://readthedocs.org/projects/laravel-custom-migrations/?badge=1.0)
 [![Total Downloads](https://poser.pugx.org/codengine/laravel-custom-migrations/d/total.png)](https://packagist.org/packages/codengine/laravel-custom-migrations)
 
