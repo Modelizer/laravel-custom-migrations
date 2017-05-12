@@ -1,6 +1,11 @@
 ## Laravel Custom Migrations
+[![Build Status](https://travis-ci.org/codengine/laravel-custom-migrations.svg?branch=master)](https://travis-ci.org/codengine/laravel-custom-migrations)
+[![Coverage Status](https://coveralls.io/repos/github/codengine/laravel-custom-migrations/badge.svg)](https://coveralls.io/github/codengine/laravel-custom-migrations)
+[![Latest Stable Version](https://poser.pugx.org/codengine/laravel-custom-migrations/version.png)](https://packagist.org/packages/codengine/laravel-custom-migrations)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/laravel-custom-migrations/badge/?version=latest)](https://readthedocs.org/projects/laravel-custom-migrations/?badge=latest)
-[![Latest Stable Version](https://poser.pugx.org/codengine/laravel-custom-migrations/version.png)](https://packagist.org/packages/codengine/laravel-custom-migrations) [![Total Downloads](https://poser.pugx.org/codengine/laravel-custom-migrations/d/total.png)](https://packagist.org/packages/codengine/laravel-custom-migrations) [![Build Status](https://travis-ci.org/codengine/laravel-custom-migrations.svg?branch=master)](https://travis-ci.org/codengine/laravel-custom-migrations) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/codengine/laravel-custom-migrations/?branch=master) [![Dependency Status](https://www.versioneye.com/user/projects/5550bb35f7db0d2f07000371/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5550bb35f7db0d2f07000371)
+[![Total Downloads](https://poser.pugx.org/codengine/laravel-custom-migrations/d/total.png)](https://packagist.org/packages/codengine/laravel-custom-migrations)
+[![Dependency Status](https://www.versioneye.com/user/projects/5550bb35f7db0d2f07000371/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5550bb35f7db0d2f07000371)
 
 ### Run separate Laravel migrations on multiple databases ###
 
