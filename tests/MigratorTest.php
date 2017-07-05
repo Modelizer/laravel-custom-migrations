@@ -1,48 +1,58 @@
 <?php
+
+use Codengine\CustomMigrations\Migrator;
+use Illuminate\Database\ConnectionResolverInterface;
+use Illuminate\Database\Migrations\MigrationRepositoryInterface;
+use Illuminate\Filesystem\Filesystem;
+
 /**
  * Author: Stefan Hueg
  * Copyright: Codengine @ 2015
  */
-
 class MigratorTest extends Orchestra\Testbench\TestCase {
-	/** @var \Codengine\CustomMigrations\Migrator|PHPUnit_Framework_MockObject_MockObject $migrator */
+	/** @var Migrator|PHPUnit_Framework_MockObject_MockObject $migrator */
 	protected $migrator;
-	/** @var \Illuminate\Database\Migrations\MigrationRepositoryInterface|PHPUnit_Framework_MockObject_MockObject */
+
+	/** @var MigrationRepositoryInterface|PHPUnit_Framework_MockObject_MockObject */
 	protected $migrationRepository;
-	/** @var \Illuminate\Database\ConnectionResolverInterface|PHPUnit_Framework_MockObject_MockObject $connectionResolver */
+
+	/** @var ConnectionResolverInterface|PHPUnit_Framework_MockObject_MockObject $connectionResolver */
 	protected $connectionResolver;
-	/** @var \Illuminate\Filesystem\Filesystem|PHPUnit_Framework_MockObject_MockObject $fileSystem */
+
+	/** @var Filesystem|PHPUnit_Framework_MockObject_MockObject $fileSystem */
 	protected $fileSystem;
 
-	protected $migrationList = array(
+	protected $migrationList = [
 		'2015_03_05_012633_default_test_migration',
 		'2015_03_05_012634_custom_test_migration',
-	);
+	];
 
 	public function setUp()
 	{
 		parent::setUp();
-		$this->migrationRepository = $this->getMockBuilder('\Illuminate\Database\Migrations\MigrationRepositoryInterface')
-			->getMock();
-		$this->migrationRepository->expects($this->any())
-			->method('log')
-			->willReturn(null);
+		$this->migrationRepository = $this->getMockBuilder(MigrationRepositoryInterface::class)->getMock();
+		$this->connectionResolver  = $this->getMockBuilder(ConnectionResolverInterface::class)->getMock();
+		$this->fileSystem          = $this->getMockBuilder(Filesystem::class)->getMock();
+        $this->migrator            = $this->getMockBuilder(Migrator::class)
+            ->setConstructorArgs(
+                [
+                    $this->migrationRepository,
+                    $this->connectionResolver = $this->getMockBuilder(ConnectionResolverInterface::class)->getMock(),
+                    $this->fileSystem
+                ]
+            )
+            ->setMethods(['resolve'])
+            ->getMock();
 
-		$this->connectionResolver = $this->getMockBuilder('\Illuminate\Database\ConnectionResolverInterface')
-			->getMock();
-		$this->fileSystem = $this->getMockBuilder('\Illuminate\Filesystem\Filesystem')
-			->getMock();
-
-		$this->migrator = $this->getMockBuilder('Codengine\CustomMigrations\Migrator')
-			->setConstructorArgs(array(
-				$this->migrationRepository,
-				$this->connectionResolver = $this->getMockBuilder('\Illuminate\Database\ConnectionResolverInterface')->getMock(),
-				$this->fileSystem
-			))
-			->setMethods(array('resolve'))
-			->getMock();
+        $this->migrationRepository
+            ->expects($this->any())
+            ->method('log')
+            ->willReturn(null);
 	}
 
+    /**
+     * @param array $resolves
+     */
 	protected function setMigrationResolves(array $resolves)
 	{
 		$this->migrator->expects($this->any())
@@ -67,20 +77,22 @@ class MigratorTest extends Orchestra\Testbench\TestCase {
 			->method('getNextBatchNumber')
 			->willReturn(1);
 
-		$default = $this->getMockBuilder('\DefaultTestMigration')
-			->setMethods(array('up'))
+		$default = $this->getMockBuilder(DefaultTestMigration::class)
+			->setMethods(['up'])
 			->getMock();
 		$default->expects($this->once())->method('up');
 
-		$custom = $this->getMockBuilder('\CustomTestMigration')
-			->setMethods(array('up'))
+		$custom = $this->getMockBuilder(CustomTestMigration::class)
+			->setMethods(['up'])
 			->getMock();
 		$custom->expects($this->never())->method('up');
 
-		$this->setMigrationResolves(array(
-			array('2015_03_05_012633_default_test_migration', $default),
-			array('2015_03_05_012634_custom_test_migration', $custom)
-		));
+		$this->setMigrationResolves(
+		    [
+                ['2015_03_05_012633_default_test_migration', $default],
+                ['2015_03_05_012634_custom_test_migration', $custom]
+		    ]
+        );
 
 		$this->migrator->runMigrationList($this->migrationList);
 	}
@@ -93,20 +105,22 @@ class MigratorTest extends Orchestra\Testbench\TestCase {
 			->method('getNextBatchNumber')
 			->willReturn(1);
 
-		$default = $this->getMockBuilder('\DefaultTestMigration')
-			->setMethods(array('up'))
+		$default = $this->getMockBuilder(DefaultTestMigration::class)
+			->setMethods(['up'])
 			->getMock();
 		$default->expects($this->never())->method('up');
 
-		$custom = $this->getMockBuilder('\CustomTestMigration')
-			->setMethods(array('up'))
+		$custom = $this->getMockBuilder(CustomTestMigration::class)
+			->setMethods(['up'])
 			->getMock();
 		$custom->expects($this->once())->method('up');
 
-		$this->setMigrationResolves(array(
-			array('2015_03_05_012633_default_test_migration', $default),
-			array('2015_03_05_012634_custom_test_migration', $custom)
-		));
+		$this->setMigrationResolves(
+		    [
+		        ['2015_03_05_012633_default_test_migration', $default],
+			    ['2015_03_05_012634_custom_test_migration', $custom]
+	    	]
+        );
 
 		$this->migrator->runMigrationList($this->migrationList);
 	}
