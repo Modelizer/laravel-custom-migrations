@@ -1,30 +1,43 @@
 <?php
+
+use Codengine\CustomMigrations\Commands\MigrateCommand;
+use Codengine\CustomMigrations\Commands\RefreshCommand;
+use Codengine\CustomMigrations\Commands\ResetCommand;
+use Codengine\CustomMigrations\Commands\RollbackCommand;
+use Codengine\CustomMigrations\CustomMigrationsServiceProvider;
+use Codengine\CustomMigrations\Migrator;
+use Illuminate\Foundation\Application;
+
 /**
  * Author: Stefan Hueg
  * Copyright: Codengine @ 2015
  */
-
 class ServiceProviderTest extends Orchestra\Testbench\TestCase {
+    /**
+     * @param Application $app
+     *
+     * @return array
+     */
     protected function getPackageProviders($app)
 	{
-		return array(
-			'Codengine\CustomMigrations\CustomMigrationsServiceProvider'
-		);
+		return [
+			CustomMigrationsServiceProvider::class
+		];
 	}
 
 	public function testMigratorServiceDoesResolve()
 	{
-		$this->assertInstanceOf('Codengine\CustomMigrations\Migrator', $this->app->make('migrator'));
+		$this->assertInstanceOf(Migrator::class, $this->app->make('migrator'));
 	}
 
 	public function testMigrateCommandDoesResolve()
 	{
-		$this->assertInstanceOf('Codengine\CustomMigrations\Commands\MigrateCommand', $this->app->make('command.migrate'));
+		$this->assertInstanceOf(MigrateCommand::class, $this->app->make('command.migrate'));
 	}
 
 	public function testMigrateCommandHasTypeOption()
 	{
-		/** @var \Codengine\CustomMigrations\Commands\MigrateCommand $command */
+		/** @var MigrateCommand $command */
 		$command = $this->app->make('command.migrate');
 		$this->assertTrue($command->getDefinition()->hasOption('type'));
 		$this->assertTrue($command->getDefinition()->hasOption('connection_name'));
@@ -33,12 +46,12 @@ class ServiceProviderTest extends Orchestra\Testbench\TestCase {
 
 	public function testRefreshCommandDoesResolve()
 	{
-		$this->assertInstanceOf('Codengine\CustomMigrations\Commands\RefreshCommand', $this->app->make('command.migrate.refresh'));
+		$this->assertInstanceOf(RefreshCommand::class, $this->app->make('command.migrate.refresh'));
 	}
 
 	public function testRefreshCommandHasTypeOption()
 	{
-		/** @var \Codengine\CustomMigrations\Commands\RefreshCommand $command */
+		/** @var RefreshCommand $command */
 		$command = $this->app->make('command.migrate.refresh');
 		$this->assertTrue($command->getDefinition()->hasOption('type'));
         $this->assertTrue($command->getDefinition()->hasOption('connection_name'));
@@ -47,12 +60,12 @@ class ServiceProviderTest extends Orchestra\Testbench\TestCase {
 
 	public function testResetCommandDoesResolve()
 	{
-		$this->assertInstanceOf('Codengine\CustomMigrations\Commands\ResetCommand', $this->app->make('command.migrate.reset'));
+		$this->assertInstanceOf(ResetCommand::class, $this->app->make('command.migrate.reset'));
 	}
 
 	public function testResetCommandHasTypeOption()
 	{
-		/** @var \Codengine\CustomMigrations\Commands\ResetCommand $command */
+		/** @var ResetCommand $command */
 		$command = $this->app->make('command.migrate.reset');
 		$this->assertTrue($command->getDefinition()->hasOption('type'));
         $this->assertTrue($command->getDefinition()->hasOption('connection_name'));
@@ -61,12 +74,12 @@ class ServiceProviderTest extends Orchestra\Testbench\TestCase {
 
 	public function testRollbackCommandDoesResolve()
 	{
-		$this->assertInstanceOf('Codengine\CustomMigrations\Commands\RollbackCommand', $this->app->make('command.migrate.rollback'));
+		$this->assertInstanceOf(RollbackCommand::class, $this->app->make('command.migrate.rollback'));
 	}
 
 	public function testRollbackCommandHasTypeOption()
 	{
-		/** @var \Codengine\CustomMigrations\Commands\RollbackCommand $command */
+		/** @var RollbackCommand $command */
 		$command = $this->app->make('command.migrate.rollback');
 		$this->assertTrue($command->getDefinition()->hasOption('type'));
         $this->assertTrue($command->getDefinition()->hasOption('connection_name'));
