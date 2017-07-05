@@ -27,9 +27,11 @@ trait BatchMigrationTrait {
 	 */
 	protected function getOptions()
 	{
-		$optExtend = array(
-			array('type', null, InputOption::VALUE_OPTIONAL, 'The migration type to be executed.', 'default'),
-		);
+        $optExtend = [
+            ['type', null, InputOption::VALUE_OPTIONAL, 'The migration type to be executed.', 'default'],
+            ['db_name', null, InputOption::VALUE_OPTIONAL, 'The database name.', 'default'],
+            ['connection_name', null, InputOption::VALUE_OPTIONAL, 'The connection name in the config.', 'default'],
+        ];
 
 		return array_merge(parent::getOptions(), $optExtend);
 	}
