@@ -1,5 +1,7 @@
 <?php namespace Codengine\CustomMigrations;
 
+use Config;
+use DB;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
@@ -52,8 +54,8 @@ trait BatchMigrationTrait {
 	 */
 	protected function getDefaultConnection()
 	{
-		$defaultConnection = \DB::getDefaultConnection();
-		$connection = \Config::get('database.connections.' . $defaultConnection);
+		$defaultConnection = DB::getDefaultConnection();
+		$connection = Config::get('database.connections.' . $defaultConnection);
 		return (empty($connection) ? array() : array($defaultConnection => $connection));
 	}
 
@@ -69,13 +71,13 @@ trait BatchMigrationTrait {
 		if($this->migrationType == "default" && empty($filter)) {
 			return $this->getDefaultConnection();
 		} elseif (!empty($filter)) {
-			$connections = \Config::get('database.connections.' . $filter);
+			$connections = Config::get('database.connections.' . $filter);
 			if(!empty($connections))
 			{
 				$connections = array($filter => $connections);
 			}
 		} else {
-			$connections = \Config::get('database.connections');
+			$connections = Config::get('database.connections');
 		}
 
 		if(!empty($connections))
