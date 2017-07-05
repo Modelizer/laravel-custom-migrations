@@ -119,11 +119,25 @@ trait BatchMigrationTrait {
 		}
 	}
 
+    /**
+     * @param string $connectionName
+     * @param string $dbName
+     */
+    private function setConfigForCustomDb($connectionName, $dbName)
+    {
+        $configKey = sprintf('database.connections.%s.database', $connectionName);
+        Config::set($configKey, $dbName);
+    }
+
 	/**
 	 * Default command override
 	 */
 	public function fire()
 	{
+        if ($this->input->getOption('db_name') !== 'default') {
+            $this->setConfigForCustomDb($this->input->getOption('connection_name'), $this->input->getOption('db_name'));
+        }
+
 		$this->setMigrationType();
 		$connections = $this->getConnectionsByType($this->input->getOption('database'));
 		if(empty($connections))
