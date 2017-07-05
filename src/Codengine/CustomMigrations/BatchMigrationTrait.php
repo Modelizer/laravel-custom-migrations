@@ -2,6 +2,7 @@
 
 use Config;
 use DB;
+use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
@@ -15,6 +16,9 @@ trait BatchMigrationTrait {
 	 * @var string
 	 */
 	protected $migrationType = 'default';
+
+    /** @var InputInterface */
+    protected $input;
 
 	/**
 	 * Extends the default options by type-option
