@@ -27,6 +27,8 @@ class ServiceProviderTest extends Orchestra\Testbench\TestCase {
 		/** @var \Codengine\CustomMigrations\Commands\MigrateCommand $command */
 		$command = $this->app->make('command.migrate');
 		$this->assertTrue($command->getDefinition()->hasOption('type'));
+		$this->assertTrue($command->getDefinition()->hasOption('connection_name'));
+		$this->assertTrue($command->getDefinition()->hasOption('db_name'));
 	}
 
 	public function testRefreshCommandDoesResolve()
@@ -39,6 +41,8 @@ class ServiceProviderTest extends Orchestra\Testbench\TestCase {
 		/** @var \Codengine\CustomMigrations\Commands\RefreshCommand $command */
 		$command = $this->app->make('command.migrate.refresh');
 		$this->assertTrue($command->getDefinition()->hasOption('type'));
+        $this->assertTrue($command->getDefinition()->hasOption('connection_name'));
+        $this->assertTrue($command->getDefinition()->hasOption('db_name'));
 	}
 
 	public function testResetCommandDoesResolve()
@@ -51,6 +55,8 @@ class ServiceProviderTest extends Orchestra\Testbench\TestCase {
 		/** @var \Codengine\CustomMigrations\Commands\ResetCommand $command */
 		$command = $this->app->make('command.migrate.reset');
 		$this->assertTrue($command->getDefinition()->hasOption('type'));
+        $this->assertTrue($command->getDefinition()->hasOption('connection_name'));
+        $this->assertTrue($command->getDefinition()->hasOption('db_name'));
 	}
 
 	public function testRollbackCommandDoesResolve()
@@ -63,5 +69,7 @@ class ServiceProviderTest extends Orchestra\Testbench\TestCase {
 		/** @var \Codengine\CustomMigrations\Commands\RollbackCommand $command */
 		$command = $this->app->make('command.migrate.rollback');
 		$this->assertTrue($command->getDefinition()->hasOption('type'));
+        $this->assertTrue($command->getDefinition()->hasOption('connection_name'));
+        $this->assertTrue($command->getDefinition()->hasOption('db_name'));
 	}
 }
